@@ -73,6 +73,9 @@ CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:5173'
 # Add CORS_ALLOW_CREDENTIALS if you're using credentials
 CORS_ALLOW_CREDENTIALS = True
 
+# Add this setting after CORS_ALLOWED_ORIGINS
+CSRF_TRUSTED_ORIGINS = ['https://inventohub-backend.onrender.com', 'https://inventohub-frontend.onrender.com']
+
 ROOT_URLCONF = 'inventory_project.urls'
 
 TEMPLATES = [

@@ -81,4 +81,11 @@ coverage.xml
 .pytest_cache/
 .mypy_cache/
 .pyre/
-.pytype/ 
+.pytype/
+
+# Add these if not already present
+staticfiles/
+.env
+*.pyc
+__pycache__/
+db.sqlite3 
