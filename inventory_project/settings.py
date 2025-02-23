@@ -74,7 +74,6 @@ CORS_ALLOW_ALL_ORIGINS = os.getenv('CORS_ALLOW_ALL_ORIGINS', 'False').lower() ==
 CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:5173').split(',')
 CSRF_TRUSTED_ORIGINS = [
     'https://inventohub-backend.onrender.com',
-    'https://inventohub-frontend.onrender.com'
 ]
 
 ROOT_URLCONF = 'inventory_project.urls'
@@ -103,15 +102,15 @@ WSGI_APPLICATION = 'inventory_project.wsgi.application'
 
 # Update database configuration
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DATABASE_NAME', 'inventoHub_db'),
-        'USER': os.getenv('DATABASE_USER', 'haroonahmed'),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD', 'Ahmed@1104'),
-        'HOST': os.getenv('DATABASE_HOST', 'localhost'),
-        'PORT': os.getenv('DATABASE_PORT', '3306'),
-    }
-}
+       'default': {
+           'ENGINE': 'mysql.connector.django',
+           'NAME': os.getenv('DATABASE_NAME', 'inventoHub_db'),
+           'USER': os.getenv('DATABASE_USER', 'haroonahmed'),
+           'PASSWORD': os.getenv('DATABASE_PASSWORD', 'Ahmed@1104'),
+           'HOST': os.getenv('DATABASE_HOST', 'localhost'),
+           'PORT': os.getenv('DATABASE_PORT', '3306'),
+       }
+   }
 
 # Print database configuration for debugging (excluding sensitive info)
 db_config = DATABASES['default'].copy()
