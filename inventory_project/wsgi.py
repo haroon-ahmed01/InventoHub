@@ -14,6 +14,8 @@ from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'inventory_project.settings')
+# Ensure Django settings module is set
+if not os.getenv('DJANGO_SETTINGS_MODULE'):
+    os.environ['DJANGO_SETTINGS_MODULE'] = 'inventory_project.settings'
 
 application = get_wsgi_application()

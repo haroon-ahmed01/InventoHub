@@ -110,6 +110,12 @@ DATABASES = {
     )
 }
 
+# Print database configuration for debugging (excluding sensitive info)
+db_config = DATABASES['default'].copy()
+if 'PASSWORD' in db_config:
+    db_config['PASSWORD'] = '********'
+print(f"Database configuration: {db_config}")
+
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
