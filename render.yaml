@@ -23,6 +23,8 @@ services:
         value: "/opt/render/project/src"
       - key: DJANGO_SETTINGS_MODULE
         value: "inventory_project.settings"
+      - key: CORS_ALLOW_ALL_ORIGINS
+        value: false
 
   - type: web
     name: inventory-frontend

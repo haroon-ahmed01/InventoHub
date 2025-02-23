@@ -20,9 +20,6 @@ pip install -r requirements.txt
 # Create the Python path if it doesn't exist
 export PYTHONPATH="/opt/render/project/src:${PYTHONPATH:-}"
 
-echo "Python path:"
-echo $PYTHONPATH
-
 echo "Environment variables (safe to display):"
 echo "PYTHONPATH: $PYTHONPATH"
 echo "DJANGO_SETTINGS_MODULE: $DJANGO_SETTINGS_MODULE"
@@ -31,7 +28,7 @@ echo "DEBUG: $DEBUG"
 echo "DATABASE_URL exists: $(if [ -n "$DATABASE_URL" ]; then echo "yes"; else echo "no"; fi)"
 
 echo "Making migrations..."
-python manage.py makemigrations
+python manage.py makemigrations --noinput
 
 echo "Running migrations..."
 python manage.py migrate --noinput
