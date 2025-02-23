@@ -103,11 +103,14 @@ WSGI_APPLICATION = 'inventory_project.wsgi.application'
 
 # Update database configuration
 DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:///db.sqlite3',
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('DATABASE_NAME', 'inventoHub_db'),
+        'USER': os.getenv('DATABASE_USER', 'haroonahmed'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD', 'Ahmed@1104'),
+        'HOST': os.getenv('DATABASE_HOST', 'localhost'),
+        'PORT': os.getenv('DATABASE_PORT', '3306'),
+    }
 }
 
 # Print database configuration for debugging (excluding sensitive info)

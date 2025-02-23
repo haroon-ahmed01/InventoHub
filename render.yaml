@@ -39,5 +39,8 @@ services:
 
 databases:
   - name: inventory-db
-    databaseName: inventory_db
-    user: inventory_user 
+    databaseName: inventoHub_db
+    user: haroonahmed
+    password: Ahmed@1104
+    host: localhost
+    port: 3306 
