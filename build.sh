@@ -25,7 +25,7 @@ echo "DATABASE_URL exists: $(if [ -n "$DATABASE_URL" ]; then echo "yes"; else ec
 
 # Wait for PostgreSQL with a timeout
 echo "Waiting for PostgreSQL..."
-TIMEOUT=30  # Set a timeout in seconds
+TIMEOUT=60  # Set a timeout in seconds
 while ! python -c "import psycopg2; psycopg2.connect()" 2>/dev/null; do
     sleep 1
     TIMEOUT=$((TIMEOUT-1))
