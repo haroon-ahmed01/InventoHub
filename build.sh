@@ -7,13 +7,6 @@ pwd
 echo "Directory contents:"
 ls -la
 
-# Install system dependencies
-if [ -f /etc/debian_version ]; then
-    echo "Installing PostgreSQL client..."
-    apt-get update
-    apt-get install -y postgresql-client
-fi
-
 echo "Installing dependencies..."
 pip install -r requirements.txt
 

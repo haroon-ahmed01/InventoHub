@@ -1,0 +1,11 @@
+{
+  "name": "inventory-system",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "cd inventory_client && npm run dev",
+    "build": "cd inventory_client && npm run build",
+    "preview": "cd inventory_client && npm run preview"
+  }
+} 

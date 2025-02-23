@@ -28,10 +28,12 @@ services:
 
   - type: web
     name: inventory-frontend
-    env: static
-    buildCommand: "npm install && npm run build"
-    staticPublishPath: "./dist"
+    env: node
+    buildCommand: "cd inventory_client && npm install && npm run build"
+    startCommand: "cd inventory_client && npm run preview"
     envVars:
+      - key: NODE_VERSION
+        value: 18.0.0
       - key: VITE_API_URL
         value: "https://inventohub-backend.onrender.com/api"
 
