@@ -8,9 +8,9 @@ services:
       - key: PYTHON_VERSION
         value: 3.11.0
       - key: DATABASE_URL
-        fromDatabase:
-          name: inventory-db
-          property: connectionString
+        value: "postgresql://inventory_user:${DATABASE_PASSWORD}@dpg-cusrf9dsvqrc73e0j9ag-a.oregon-postgres.render.com/inventory_db"
+      - key: DATABASE_PASSWORD
+        generateValue: true
       - key: DJANGO_SECRET_KEY
         value: "b7d3f8a9c2e5-47f1-91d6-a3b4e0f9c8d7"
       - key: DEBUG

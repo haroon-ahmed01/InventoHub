@@ -7,6 +7,13 @@ pwd
 echo "Directory contents:"
 ls -la
 
+# Install system dependencies
+if [ -f /etc/debian_version ]; then
+    echo "Installing PostgreSQL client..."
+    apt-get update
+    apt-get install -y postgresql-client
+fi
+
 echo "Installing dependencies..."
 pip install -r requirements.txt
 
@@ -16,8 +23,18 @@ export PYTHONPATH="/opt/render/project/src:${PYTHONPATH:-}"
 echo "Python path:"
 echo $PYTHONPATH
 
-echo "Collecting static files..."
-python manage.py collectstatic --no-input --verbosity 2
+echo "Environment variables (safe to display):"
+echo "PYTHONPATH: $PYTHONPATH"
+echo "DJANGO_SETTINGS_MODULE: $DJANGO_SETTINGS_MODULE"
+echo "ALLOWED_HOSTS: $ALLOWED_HOSTS"
+echo "DEBUG: $DEBUG"
+echo "DATABASE_URL exists: $(if [ -n "$DATABASE_URL" ]; then echo "yes"; else echo "no"; fi)"
+
+echo "Making migrations..."
+python manage.py makemigrations
 
 echo "Running migrations..."
-python manage.py migrate --verbosity 2 
+python manage.py migrate --noinput
+
+echo "Collecting static files..."
+python manage.py collectstatic --no-input --verbosity 2 

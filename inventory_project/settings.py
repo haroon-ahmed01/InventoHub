@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+import dj_database_url
 
 load_dotenv()
 
@@ -100,21 +101,24 @@ WSGI_APPLICATION = 'inventory_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME', 'inventory_db'),
-        'USER': os.getenv('DB_USER', 'inventory_user'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'Ahmed@1104python'),
-        'HOST': os.getenv('DB_HOST', 'localhost'),
-        'PORT': os.getenv('DB_PORT', '3306'),
+# Database configuration
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
-
-# Add this condition after the above configuration
-if os.getenv('DATABASE_URL'):
-    import dj_database_url
-    DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+else:
+    DATABASE_URL = os.getenv('DATABASE_URL')
+    if DATABASE_URL:
+        DATABASES = {
+            'default': dj_database_url.config(
+                default=DATABASE_URL,
+                conn_max_age=600,
+                conn_health_checks=True,
+            )
+        }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
