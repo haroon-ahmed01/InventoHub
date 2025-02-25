@@ -1,0 +1,35 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore Python/Django files
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.log
+db.sqlite3
+instance/
+.env
+
+# Ignore MySQL database dumps (optional)
+*.sql
+db.sqlite3
+
+# Ignore Node.js dependencies
+node_modules/
+dist/
+.vite/
+.vitepress/
+
+# Ignore React environment files
+frontend/.env
+
+# Ignore IDE/editor-specific files
+.vscode/
+.idea/
+*.iml
+
+# Ignore build artifacts
+build/
+coverage/
