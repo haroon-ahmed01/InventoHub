@@ -11,6 +11,11 @@ __pycache__/
 db.sqlite3
 instance/
 .env
+env/
+venv/
+migrations/__pycache__/
+media/  # Ignore uploaded media files (optional)
+staticfiles/  # Ignore collected static files
 
 # Ignore MySQL database dumps (optional)
 *.sql
@@ -19,8 +24,10 @@ db.sqlite3
 # Ignore Node.js dependencies
 node_modules/
 dist/
+build/
 .vite/
 .vitepress/
+frontend/.env
 
 # Ignore React environment files
 frontend/.env
